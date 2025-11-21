@@ -25,8 +25,6 @@ public class PerplexityService {
     private final AIInteractionRepository aiInteractionRepository;
     private final UserRepository userRepository;
 
-    private final String apiKey = "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";
-    private final String apiUrl = "https://api.perplexity.ai/chat/completions";
 
     private static final int MEMORY_SIZE = 6;
 
