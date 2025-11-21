@@ -25,7 +25,9 @@ public class PerplexityService {
     private final AIInteractionRepository aiInteractionRepository;
     private final UserRepository userRepository;
 
+    private static final String API_KEY = System.getenv("PERPLEXITY_API_KEY");
 
+    private final String apiUrl = "https://api.perplexity.ai/chat/completions";
     private static final int MEMORY_SIZE = 6;
 
     // Transactional is required to lazily fetch Skills and Goals from the database
