@@ -1,15 +1,14 @@
 services:
-  # Spring Boot Application - Windows Container
   nova-app:
     build:
       context: .
-      dockerfile: Dockerfile.windows
-    container_name: nova-spring-app-windows
+      dockerfile: Dockerfile
+    container_name: nova-spring-app
     ports:
-      - "8000:8000"
+      - "8080:8080"
     environment:
       # Spring Boot port
-      - SERVER_PORT=8000
+      - SERVER_PORT=8080
 
       # Database Configuration (usando Oracle da FIAP na nuvem)
       - SPRING_DATASOURCE_URL=${DB_URL:-jdbc:oracle:thin:@oracle.fiap.com.br:1521/ORCL}
@@ -31,7 +30,4 @@ services:
       - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY=DEBUG
       - LOGGING_LEVEL_ORG_SPRINGFRAMEWORK=DEBUG
 
-    restart: "no"
-
-    # Windows container specific settings
-    isolation: process
+    restart: unless-stopped
